@@ -1,0 +1,10 @@
+sudo: require
+
+services:
+  - docker
+
+before_install:
+  - docker build -t dkvesic/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true dkvesic/docker-react npm run test
